@@ -11,7 +11,7 @@ const Home = () => {
 
       <main>
         <div className="container mx-auto">
-          <div className="mb-14 mt-32 px-4 sm:mb-20 sm:px-6 md:px-8 xl:mb-8">
+          <div className="mb-14 mt-32 px-4 sm:mb-20 sm:px-4 md:px-4 xl:mb-8">
             <h1 className="mt-10 mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 sm:mt-14 sm:mb-10 sm:text-6xl lg:text-7xl">
               Next.js Tailwind Authentication
             </h1>
