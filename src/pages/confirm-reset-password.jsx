@@ -2,25 +2,26 @@ import { Input } from 'components/input'
 import { useRouter } from 'next/router'
 import { AuthWrapper } from 'components/auth-wrapper'
 
-const ResetPassword = () => {
+const ConfirmResetPassword = () => {
   const router = useRouter()
 
   const onChange = () => {}
 
-  const forgotPassword = () => {
-    router.push('/confirm-reset-password')
-  }
+  const forgotPasswordSubmit = () => {}
 
   return (
     <AuthWrapper>
-      <p className="text-3xl font-black">Reset password</p>
+      <p className="text-3xl font-black">Confirm reset password</p>
       <div className="mt-10">
-        <label className="text-sm">Email</label>
-        <Input onChange={onChange} name="email" />
+        <label className="text-sm">Confirmation Code</label>
+        <Input onChange={onChange} name="authCode" />
       </div>
-
+      <div className="mt-6">
+        <label className="text-sm">New Password</label>
+        <Input type="password" name="password" onChange={onChange} />
+      </div>
       <button
-        onClick={() => forgotPassword()}
+        onClick={() => forgotPasswordSubmit()}
         className="mt-4 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
       >
         Continue
@@ -35,4 +36,4 @@ const ResetPassword = () => {
   )
 }
 
-export default ResetPassword
+export default ConfirmResetPassword
