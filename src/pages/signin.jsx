@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { AuthWrapper } from 'components/auth-wrapper'
 import { useUser } from 'hooks/use-user'
 import { useRouter } from 'next/router'
+import { SocialSignIn } from 'components/social-signin'
 
 const Signin = () => {
   const { isLoading } = useUser()
@@ -50,7 +51,7 @@ const Signin = () => {
           Password
           <span
             onClick={() => router.push('/reset-password')}
-            className="ml-auto cursor-pointer text-pink-500"
+            className="ml-auto cursor-pointer text-pink-500 hover:text-pink-700"
           >
             Forgot your password?
           </span>
@@ -59,17 +60,17 @@ const Signin = () => {
       </div>
       <button
         onClick={signIn}
-        className="mt-6 w-full rounded bg-pink-600 p-3 text-white"
+        className="mt-6 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
       >
         Continue
       </button>
-      {/* <SocialSignIn /> */}
+      <SocialSignIn />
       <p className="mt-12 text-sm font-light">
         {"Don't have an account?"}
         <span
           onClick={() => router.push('/signup')}
           role="button"
-          className="cursor-pointer text-pink-600"
+          className="cursor-pointer text-pink-500 hover:text-pink-700"
         >
           {' '}
           Sign Up.

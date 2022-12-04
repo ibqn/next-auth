@@ -18,7 +18,12 @@ const Signup = () => {
       <div className="mt-7">
         <label className="flex text-sm">
           Password
-          <span className="ml-auto text-pink-500">Forgot your password?</span>
+          <span
+            onClick={() => router.push('/reset-password')}
+            className="ml-auto cursor-pointer text-pink-500 hover:text-pink-700"
+          >
+            Forgot your password?
+          </span>
         </label>
         <Input name="password" onChange={onChange} type="password" />
       </div>
@@ -28,14 +33,14 @@ const Signup = () => {
       </div>
       <button
         onClick={signUp}
-        className="mt-10 w-full rounded bg-pink-600 p-3 text-white"
+        className="mt-10 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
       >
         Continue
       </button>
       <p className="mt-12 text-sm font-light">
         Already have an account?
         <span
-          className="cursor-pointer text-pink-600"
+          className="cursor-pointer text-pink-500 hover:text-pink-700"
           onClick={() => router.push('/signin')}
         >
           {' '}

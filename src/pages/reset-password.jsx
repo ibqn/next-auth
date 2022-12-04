@@ -22,13 +22,13 @@ const ResetPassword = () => {
       </div>
       <button
         onClick={() => forgotPasswordSubmit()}
-        className="mt-4 w-full rounded bg-pink-600 p-3 text-white"
+        className="mt-4 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
       >
         Continue
       </button>
       <button
         onClick={() => router.push('/signin')}
-        className="mt-6 text-sm text-pink-500"
+        className="mt-6 text-sm text-pink-500 hover:text-pink-700"
       >
         Cancel
       </button>
