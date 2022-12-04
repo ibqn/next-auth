@@ -28,7 +28,7 @@ const Signup = () => {
         <Input name="password" onChange={onChange} type="password" />
       </div>
       <div className="mt-7">
-        <label className="text-sm">Repeat Password</label>
+        <label className="text-sm">Confirm Password</label>
         <Input name="repeat password" onChange={onChange} type="password" />
       </div>
       <button

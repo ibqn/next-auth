@@ -20,6 +20,10 @@ const ConfirmResetPassword = () => {
         <label className="text-sm">New Password</label>
         <Input type="password" name="password" onChange={onChange} />
       </div>
+      <div className="mt-6">
+        <label className="text-sm">Confirm New Password</label>
+        <Input type="password" name="confirm password" onChange={onChange} />
+      </div>
       <button
         onClick={() => forgotPasswordSubmit()}
         className="mt-4 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
