@@ -5,7 +5,7 @@ import { AuthWrapper } from 'components/auth-wrapper'
 import { useUser } from 'hooks/use-user'
 import { useRouter } from 'next/router'
 
-const Login = () => {
+const Signin = () => {
   const { isLoading } = useUser()
   const router = useRouter()
 
@@ -46,11 +46,11 @@ const Login = () => {
         <Input onChange={onChange} name="email" />
       </div>
       <div className="mt-7">
-        <label className="text-sm">
+        <label className="flex text-sm">
           Password
           <span
-            onClick={() => router.push('/forgotPassword')}
-            className="ml-8 cursor-pointer text-pink-500 sm:ml-48"
+            onClick={() => router.push('/reset-password')}
+            className="ml-auto cursor-pointer text-pink-500"
           >
             Forgot your password?
           </span>
@@ -78,4 +78,4 @@ const Login = () => {
     </AuthWrapper>
   )
 }
-export default Login
+export default Signin
