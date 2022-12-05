@@ -1,12 +1,36 @@
+import { Auth } from 'aws-amplify'
 import { AuthWrapper } from 'components/auth-wrapper'
 import { Input } from 'components/input'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useStore, selectSetEmail, selectSetPassword } from 'store'
 
 const Signup = () => {
   const router = useRouter()
 
-  const onChange = () => {}
-  const signUp = () => {}
+  const setEmail = useStore(selectSetEmail)
+  const setPassword = useStore(selectSetPassword)
+
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
+  const { email, password } = formState
+
+  const onChange = ({ target: { name, value } }) =>
+    setFormState({ ...formState, [name]: value })
+
+  const signUp = async () => {
+    try {
+      await Auth.signUp({ username: email, password, attributes: { email } })
+      setEmail(email)
+      setPassword(password)
+      router.push('/confirm')
+    } catch (error) {
+      console.log({ error })
+    }
+  }
 
   return (
     <AuthWrapper>
@@ -29,7 +53,7 @@ const Signup = () => {
       </div>
       <div className="mt-7">
         <label className="text-sm">Confirm Password</label>
-        <Input name="repeat password" onChange={onChange} type="password" />
+        <Input name="confirmPassword" onChange={onChange} type="password" />
       </div>
       <button
         onClick={signUp}
@@ -38,14 +62,14 @@ const Signup = () => {
         Continue
       </button>
       <p className="mt-12 text-sm font-light">
-        Already have an account?
+        {'Already have an account? '}
         <span
           className="cursor-pointer text-pink-500 hover:text-pink-700"
           onClick={() => router.push('/signin')}
         >
-          {' '}
-          Sign In.
+          Sign In
         </span>
+        .
       </p>
     </AuthWrapper>
   )

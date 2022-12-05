@@ -1,14 +1,29 @@
 import { Input } from 'components/input'
 import { useRouter } from 'next/router'
 import { AuthWrapper } from 'components/auth-wrapper'
+import { useState } from 'react'
+import { useStore, selectSetEmail } from 'store'
 
 const ResetPassword = () => {
+  const setEmail = useStore(selectSetEmail)
+
+  const [formState, setFormState] = useState({
+    email: '',
+  })
+  const { email } = formState
   const router = useRouter()
 
-  const onChange = () => {}
+  const onChange = ({ target: { name, value } }) =>
+    setFormState({ ...formState, [name]: value })
 
-  const forgotPassword = () => {
-    router.push('/confirm-reset-password')
+  const forgotPassword = async () => {
+    try {
+      await Auth.forgotPassword(email)
+      setEmail(email)
+      await router.push('/confirm-reset-password')
+    } catch (error) {
+      console.log({ error })
+    }
   }
 
   return (
@@ -20,7 +35,7 @@ const ResetPassword = () => {
       </div>
 
       <button
-        onClick={() => forgotPassword()}
+        onClick={forgotPassword}
         className="mt-4 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
       >
         Continue

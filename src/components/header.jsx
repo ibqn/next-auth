@@ -7,13 +7,13 @@ export const Header = () => {
         href="/"
         className="py-2 text-base font-medium leading-6 transition-colors duration-200 hover:text-gray-600"
       >
-        <p>Home</p>
+        Home
       </Link>
       <Link
         href="/profile"
         className="ml-10 py-2 text-base font-medium leading-6 transition-colors duration-200 hover:text-gray-600"
       >
-        <p>Profile</p>
+        Profile
       </Link>
     </nav>
   )

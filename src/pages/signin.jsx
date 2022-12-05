@@ -16,7 +16,7 @@ const Signin = () => {
   })
   const { email, password } = formState
 
-  async function signIn() {
+  const signIn = async () => {
     try {
       await Auth.signIn(email, password)
       router.push('/profile')
@@ -25,9 +25,8 @@ const Signin = () => {
     }
   }
 
-  function onChange(e) {
-    setFormState({ ...formState, [e.target.name]: e.target.value })
-  }
+  const onChange = ({ target: { name, value } }) =>
+    setFormState({ ...formState, [name]: value })
 
   if (isLoading) {
     return (
@@ -66,15 +65,15 @@ const Signin = () => {
       </button>
       <SocialSignIn />
       <p className="mt-12 text-sm font-light">
-        {"Don't have an account?"}
+        {"Don't have an account? "}
         <span
           onClick={() => router.push('/signup')}
           role="button"
           className="cursor-pointer text-pink-500 hover:text-pink-700"
         >
-          {' '}
-          Sign Up.
+          Sign Up
         </span>
+        .
       </p>
     </AuthWrapper>
   )
