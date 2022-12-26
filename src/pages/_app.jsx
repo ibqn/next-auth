@@ -3,10 +3,10 @@ import { Wrapper } from 'components/wrapper'
 import 'styles/globals.css'
 
 import { Amplify } from 'aws-amplify'
-import config from 'aws-exports'
+import awsConfig from 'aws-exports'
 
 Amplify.configure({
-  ...config,
+  ...awsConfig,
   ssr: true,
 })
 
