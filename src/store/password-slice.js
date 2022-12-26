@@ -1,6 +1,6 @@
 export const createPasswordSlice = (set) => ({
   password: '',
-  setPassword: (email) => set(() => ({ email })),
+  setPassword: (password) => set(() => ({ password })),
 })
 
 export const selectPassword = (state) => state.password
