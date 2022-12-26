@@ -10,13 +10,13 @@ const Profile = () => {
 
   useEffect(() => {
     const handleRouteChange = async () => {
-      if (!user) {
+      if (!user && !isLoading) {
         await router.push('/signin')
       }
     }
 
     handleRouteChange()
-  }, [user, router])
+  }, [user, router, isLoading])
 
   if (isLoading || error)
     return (
@@ -26,24 +26,25 @@ const Profile = () => {
     )
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <Head>
         <title>Next Auth</title>
         <meta name="description" content="Next Auth" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p className="text-xl font-black">Welcome, {user.email}</p>
-      <button
-        onClick={async () => {
-          Auth.signOut()
-          setUser(null)
-          await router.push('/signin')
-        }}
-        className="mt-10 w-full rounded bg-pink-600 p-3 text-white"
-      >
-        Sign Out
-      </button>
+      <div className="mt-32">
+        <p className="text-xl font-black">Welcome, {user.email}</p>
+        <button
+          onClick={async () => {
+            Auth.signOut()
+            await router.push('/signin')
+          }}
+          className="mt-10 w-full rounded bg-pink-600 p-3 text-white"
+        >
+          Sign Out
+        </button>
+      </div>
     </div>
   )
 }
