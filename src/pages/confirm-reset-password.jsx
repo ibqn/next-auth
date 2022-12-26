@@ -1,6 +1,7 @@
 import { Input } from 'components/input'
 import { useRouter } from 'next/router'
 import { AuthWrapper } from 'components/auth-wrapper'
+import { Auth } from 'aws-amplify'
 import { useState } from 'react'
 import { useStore, selectEmail } from 'store'
 
