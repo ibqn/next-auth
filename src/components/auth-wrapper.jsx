@@ -1,6 +1,6 @@
 export const AuthWrapper = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-[calc(100vh-140px)] bg-gray-50">
       <div className="flex flex-col items-center">
         <div className="mt-14 max-w-full sm:w-540">
           <div className="mb-8">
