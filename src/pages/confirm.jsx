@@ -3,7 +3,7 @@ import { AuthWrapper } from 'components/auth-wrapper'
 import { Input } from 'components/input'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { selectEmail, useStore, selectPassword } from 'store'
+import { selectEmail, useStore, selectPassword, selectSetPassword } from 'store'
 
 const Confirm = () => {
   const email = useStore(selectEmail)
