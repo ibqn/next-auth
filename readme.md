@@ -23,6 +23,8 @@ pnpm add -g @aws-amplify/cli
 amplify init
 ```
 
+![Amplify init](./amplify-init.png)
+
 ```text
 Select the following configuration:
 
@@ -51,6 +53,8 @@ Project information
 amplify add auth
 ```
 
+![Amplify add auth](./amplify-add-auth.png)
+
 ```text
 **Do you want to use the default authentication and security configuration?** Default configuration
 **How do you want users to be able to sign in?** Email
@@ -62,3 +66,9 @@ amplify add auth
 ```bash
 amplify push --y
 ```
+
+![Amplify push](./amplify-push.png)
+
+## Screenshot
+
+![Screenshot](./screenshot.png)
