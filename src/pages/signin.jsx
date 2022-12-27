@@ -1,32 +1,36 @@
 import { Input } from 'components/input'
 import { Auth } from 'aws-amplify'
-import { useState } from 'react'
 import { AuthWrapper } from 'components/auth-wrapper'
 import { useUser } from 'hooks/use-user'
 import { useRouter } from 'next/router'
 import { SocialSignIn } from 'components/social-signin'
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 
 const Signin = () => {
   const { isLoading } = useUser()
   const router = useRouter()
 
-  const [formState, setFormState] = useState({
-    email: '',
-    password: '',
-  })
-  const { email, password } = formState
+  const [signInError, setSignInError] = useState(null)
 
-  const signIn = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'all',
+  })
+
+  const signIn = async (data) => {
+    const { email, password } = data
     try {
       await Auth.signIn(email, password)
       router.push('/profile')
     } catch (error) {
+      setSignInError(error)
       console.log({ error })
     }
   }
-
-  const onChange = ({ target: { name, value } }) =>
-    setFormState({ ...formState, [name]: value })
 
   if (isLoading) {
     return (
@@ -40,29 +44,43 @@ const Signin = () => {
 
   return (
     <AuthWrapper>
-      <p className="text-3xl font-black">Sign in to your account</p>
-      <div className="mt-10">
-        <label className="text-sm">Email</label>
-        <Input onChange={onChange} name="email" />
-      </div>
-      <div className="mt-7">
-        <label className="flex text-sm">
-          Password
-          <span
-            onClick={() => router.push('/reset-password')}
-            className="ml-auto cursor-pointer text-pink-500 hover:text-pink-700"
-          >
-            Forgot your password?
-          </span>
-        </label>
-        <Input type="password" name="password" onChange={onChange} />
-      </div>
-      <button
-        onClick={signIn}
-        className="mt-6 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
-      >
-        Continue
-      </button>
+      <form onSubmit={handleSubmit(signIn)}>
+        <p className="text-3xl font-black">Sign in to your account</p>
+        <div className="mt-10">
+          <label className="text-sm">Email</label>
+          <Input type="email" {...register('email', { required: true })} />
+          {errors.email && <p className="text-pink-500">Email is required.</p>}
+        </div>
+        <div className="mt-7">
+          <label className="flex text-sm">
+            Password
+            <span
+              onClick={() => router.push('/reset-password')}
+              className="ml-auto cursor-pointer text-pink-500 hover:text-pink-700"
+            >
+              Forgot your password?
+            </span>
+          </label>
+          <Input
+            type="password"
+            {...register('password', { required: true })}
+          />
+          {errors.password && (
+            <p className="text-pink-500">Password is required.</p>
+          )}
+        </div>
+        <button
+          type="submit"
+          className="mt-6 w-full rounded bg-pink-600 p-3 text-white hover:bg-pink-700"
+        >
+          Continue
+        </button>
+        {signInError && (
+          <div className="mt-6 flex justify-center font-bold text-pink-600">
+            Sign in failed!
+          </div>
+        )}{' '}
+      </form>
       <SocialSignIn />
       <p className="mt-12 text-sm font-light">
         {"Don't have an account? "}

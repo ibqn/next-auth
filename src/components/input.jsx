@@ -1,10 +1,12 @@
+import { forwardRef } from 'react'
 import { classNames } from 'util/class-names'
 
-export const Input = (props) => {
+export const Input = forwardRef((props, ref) => {
   const { className, ...restProps } = props
 
   return (
     <input
+      ref={ref}
       {...restProps}
       className={classNames(
         className,
@@ -12,4 +14,6 @@ export const Input = (props) => {
       )}
     />
   )
-}
+})
+
+Input.displayName = 'Input'
