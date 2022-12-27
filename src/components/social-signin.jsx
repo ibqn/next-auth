@@ -1,12 +1,17 @@
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
 import { Auth } from 'aws-amplify'
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 
 export const SocialSignIn = () => {
   return (
     <div className="flex flex-col">
       <button
         className="mt-10 focus:outline-none"
-        onClick={() => Auth.federatedSignIn({ provider: 'Google' })}
+        onClick={async () =>
+          await Auth.federatedSignIn({
+            provider: CognitoHostedUIIdentityProvider.Google,
+          })
+        }
       >
         <div className="flex items-center justify-center rounded-full border border-gray-300 p-2 hover:border-pink-700">
           <FaGoogle size="38" className="h-8 text-red-600" />
@@ -15,7 +20,11 @@ export const SocialSignIn = () => {
       </button>
       <button
         className="mt-4 focus:outline-none"
-        onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })}
+        onClick={() =>
+          Auth.federatedSignIn({
+            provider: CognitoHostedUIIdentityProvider.Facebook,
+          })
+        }
       >
         <div className="flex items-center justify-center rounded-full border border-gray-300 p-2 hover:border-pink-700">
           <FaFacebook size="38" className="h-8 text-blue-600" />
