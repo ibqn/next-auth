@@ -79,7 +79,7 @@ const Signin = () => {
           <div className="mt-6 flex justify-center font-bold text-pink-600">
             Sign in failed!
           </div>
-        )}{' '}
+        )}
       </form>
       <SocialSignIn />
       <p className="mt-12 text-sm font-light">
