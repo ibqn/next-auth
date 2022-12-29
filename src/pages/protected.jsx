@@ -1,4 +1,4 @@
-import { withSSRContext } from 'aws-amplify'
+import { withSSRContext, Auth } from 'aws-amplify'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
