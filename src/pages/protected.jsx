@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 const Protected = ({ user }) => {
   const router = useRouter()
 
-  console.log('client side user', user)
   return (
     <div className="flex items-center justify-center">
       <Head>
