@@ -15,6 +15,12 @@ export const Header = () => {
       >
         Profile
       </Link>
+      <Link
+        href="/protected"
+        className="ml-10 py-2 text-base font-medium leading-6 transition-colors duration-200 hover:text-gray-600"
+      >
+        Protected
+      </Link>
     </nav>
   )
 }
