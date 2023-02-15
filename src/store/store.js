@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { createEmailSlice } from './email-slice'
 import { createPasswordSlice } from './password-slice'
 
